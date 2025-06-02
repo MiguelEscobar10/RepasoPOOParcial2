@@ -4,7 +4,7 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        Plato plato1 = new Plato("Wendys", "Big Bacon", 7.99);
+        Plato plato1 = new Plato("Wendys", "Big Bacon", 2);
         Plato plato2 = new Plato("El Rinconcito", "Tapa Arterias", 6);
         Plato plato3 = new Plato("Tortas la China", "La triple", 3);
 
@@ -14,11 +14,21 @@ public class Main {
         menu.add(plato3);
 
         Map<Plato, Integer> pedidoCliente = new HashMap<>();
-        //pedidoCliente.put(plato1, 2);
+        pedidoCliente.put(plato1, 2);
         /*pedidoCliente.put(plato2, 2);
         pedidoCliente.put(plato3, 3);*/
 
-        String fechaPedido = "2025-05-02"; // Ya que el cliente no me puede dar la fecha en estilo localdate
+        List<Plato> menuT = new ArrayList<Plato>();
+        menu.add(plato1);
+        menu.add(plato2);
+        menu.add(plato3);
+
+        Map<Plato, Integer> pedidoClienteT = new HashMap<>();
+        pedidoCliente.put(plato1, 2);
+        /*pedidoCliente.put(plato2, 2);
+        pedidoCliente.put(plato3, 3);*/
+
+        String fechaPedido = "2025-06-29"; // Ya que el cliente no me puede dar la fecha en estilo localdate
         LocalDate conversionFecha = LocalDate.parse(fechaPedido);
 
         PedidoComida pedido1 = new PedidoComida("Kalet", conversionFecha,0, menu,pedidoCliente);
@@ -30,5 +40,9 @@ public class Main {
         }else{
             System.out.println("Fecha invalida");
         }
+
+        PedidoTaxi pt1 = new PedidoTaxi("Marcos", conversionFecha, 0, "San Jacinto", "San Marcos",10,menu,pedidoCliente);
+        pedidoCliente.put(plato1, 2);
+        pt1.imprimir();
     }
 }
